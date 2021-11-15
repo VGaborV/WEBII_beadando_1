@@ -1,13 +1,13 @@
 <?php
 class Database {
     
-    public static $host = "127.0.0.1";
-    public static $dbname = "vizvezetekszerelok";
+    public static $host = "localhost";
+    public static $dbname = "vizvezetek";
     public static $username = "root";
     public static $password = "";
 
     public static function connect() {
-            $pdo = new PDO("mysql:host=".self::$host.";dbname=".self::$dbname.";charset=utf8", self::$username, self::$password);
+            $pdo = new PDO('mysql:host=localhost;dbname=vizvezetek', 'vizvezetek', 'vizvezetek123');
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $pdo;
     }

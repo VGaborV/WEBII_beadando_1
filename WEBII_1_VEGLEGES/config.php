@@ -48,5 +48,10 @@ $routes = [
         'visibleLoggedIn' => false,
         'visibleLoggedOut' => false,
     ],
+    'devizavaltas' => [
+        'title' => 'DevizaVáltás',
+        'visibleLoggedIn' => true,
+        'visibleLoggedOut' => true,
+    ],
 ];
 

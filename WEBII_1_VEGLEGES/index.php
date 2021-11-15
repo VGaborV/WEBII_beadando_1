@@ -3,6 +3,8 @@ include('config.php');
 include('Vendor/renderer.php');
 include('Vendor/database.php');
 
+session_start();
+
 $oldal = empty($_GET['url']) ? null : $_GET['url'];
 if ($oldal === 'index.php' || $oldal === null) {
     $oldal = "home";
@@ -18,9 +20,9 @@ require_once('Model/' . $oldal . 'Model.php');
 $controllerName = $oldal . 'Controller';
 $controller = new $controllerName();
 
+$content = $controller->render();
 $header = render('View/header.php', $fejlec);
 $menu = render('View/menu.php', ['routes' => $routes, 'keres' => $oldal]);
-$content = $controller->render();
 $footer = render('View/footer.php', $lablec);
 
 echo $header;

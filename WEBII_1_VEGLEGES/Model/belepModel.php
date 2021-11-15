@@ -1,6 +1,6 @@
 <?php
 class belepModel {
-    belep() {
+    function belep($felhasznalo, $jelszo) {
         try {
             // Kapcsolódás
             $dbh = Database::connect();
@@ -8,16 +8,19 @@ class belepModel {
             // Felhsználó keresése
             $sqlSelect = "select id, csaladi_nev, uto_nev from felhasznalok where bejelentkezes = :bejelentkezes and jelszo = sha1(:jelszo)";
             $sth = $dbh->prepare($sqlSelect);
-            $sth->execute(array(':bejelentkezes' => $_POST['felhasznalo'], ':jelszo' => $_POST['jelszo']));
+            $sth->execute(array(':bejelentkezes' => $felhasznalo, ':jelszo' => $jelszo));
             $row = $sth->fetch(PDO::FETCH_ASSOC);
             if($row) {
                 $_SESSION['csn'] = $row['csaladi_nev'];
                 $_SESSION['un'] = $row['uto_nev'];
                 $_SESSION['login'] = $_POST['felhasznalo'];
             }
+            return $row;
         }
         catch (PDOException $e) {
             $errormessage = "Hiba: ".$e->getMessage();
+            return ['errormessage' => $errormessage];
         }     
+        return [];
     }
 }

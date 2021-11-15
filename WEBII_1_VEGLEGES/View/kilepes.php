@@ -4,7 +4,7 @@
                     <div class="col-md-12">
                     
 <h1>Kilépett:</h1>
-<?= $data['csn']." ".$data['un']." (".$data['login'].")" ?>
+<?= $params['csn']." ".$params['un']." (".$params['login'].")" ?>
 
                     </div>
                 </div>

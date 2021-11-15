@@ -2,18 +2,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                    <?php if(isset($row)) { ?>
-                        <?php if($row) { ?>
+                    <?php if(isset($params) && !empty($params)) { ?>
+                        <?php if($params) { ?>
                             <h1>Bejelentkezett:</h1>
-                            Azonosító: <strong><?= $row['id'] ?></strong><br><br>
-                            Név: <strong><?= $row['csaladi_nev']." ".$row['uto_nev'] ?></strong>
+                            Azonosító: <strong><?= $params['id'] ?></strong><br><br>
+                            Név: <strong><?= $params['csaladi_nev']." ".$params['uto_nev'] ?></strong>
                         <?php } else { ?>
                             <h1>A bejelentkezés nem sikerült!</h1>
                             <a href="?oldal=belepes" >Próbálja újra!</a>
                         <?php } ?>
                     <?php } ?>
-                    <?php if(isset($errormessage)) { ?>
-                        <h2><?= $errormessage ?></h2>
+                    <?php if(isset($params['errormessage'])) { ?>
+                        <h2><?= $params['errormessage'] ?></h2>
                     <?php } ?>
 
                     </div>
